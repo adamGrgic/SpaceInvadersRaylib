@@ -4,7 +4,7 @@ Spaceship::Spaceship()
 {
     image = LoadTexture("Graphics/spaceship.png");
     position.x = (GetScreenWidth() - image.width)/2;
-    position.y = GetScreenHeight() - image.height;
+    position.y = GetScreenHeight() - image.height - 100;
     lastFireTime = 0.0;
 }
 
@@ -19,8 +19,8 @@ void Spaceship::Draw() {
 
 void Spaceship::MoveLeft() {
     position.x -= 7;    
-    if (position.x < 0) {
-        position.x = 0;
+    if (position.x < 25) {
+        position.x = 25;
     }
 }
 
@@ -38,4 +38,13 @@ void Spaceship::FireLaser() {
         lastFireTime = GetTime();
     }
 
+}
+
+Rectangle Spaceship::getRect() {
+    return {position.x, position.y, float(image.width), float(image.height)};
+}
+
+void Spaceship::Reset() {
+    position.x = (GetScreenWidth() - image.width)/ 2.0f;
+    position.y = GetScreenHeight() - image.height - 100;
 }

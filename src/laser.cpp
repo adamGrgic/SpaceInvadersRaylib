@@ -14,10 +14,20 @@ void Laser::Draw() {
         DrawRectangle(position.x, position.y, 4, 15, {243, 216, 63, 255});
 }
 
+Rectangle Laser::getRect() {
+    Rectangle rect;
+    rect.x = position.x;
+    rect.y = position.y;
+    rect.width = 4;
+    rect.height = 15;
+    return rect;
+}
+
+
 void Laser::Update() {
     position.y += speed;
     if (active) {
-        if(position.y > GetScreenHeight() || position.y < 0) {
+        if(position.y > GetScreenHeight() - 100 || position.y < 25) {
             active = false;
             std::cout << "Laser Inactive" << std::endl;
         }
