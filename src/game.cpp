@@ -182,6 +182,14 @@ void Game::CheckForCollisions() {
         auto it = aliens.begin();
         while(it != aliens.end()) {
             if (CheckCollisionRecs(it -> getRect(), laser.getRect())) {
+                if (it -> type == 1){
+                    score += 100;
+                } else if (it -> type == 2) {
+                    score += 200;
+                } else if (it ->  type == 3) {
+                    score += 300;
+                }
+
                 it = aliens.erase(it);
                 laser.active = false;
             } else {
@@ -204,7 +212,8 @@ void Game::CheckForCollisions() {
         if (CheckCollisionRecs(mysteryship.getRect(), laser.getRect())) {
             mysteryship.alive = false;
             laser.active = false;
-            
+            score += 500;
+            CheckForHighScore();
         }
     }
 
@@ -268,6 +277,8 @@ void Game::InitGame() {
     timeLastAlienFired = 0.0;
     timeLastSpawn = 0.0;
     lives = 3;
+    highscore = 0;
+    score = 0;
     run = true;
     mysteryShipSpawnInterval = GetRandomValue(10, 20);
 }
@@ -277,4 +288,10 @@ void Game::Reset() {
     aliens.clear();
     alienLasers.clear();
     obstacles.clear();
+}
+
+void Game::CheckForHighScore() {
+    if (score > highscore) {
+
+    }
 }
