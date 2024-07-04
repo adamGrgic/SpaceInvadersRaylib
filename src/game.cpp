@@ -4,20 +4,45 @@
 
 Game::Game()
 {
-    music = LoadMusicStream("Sounds/music.ogg");
+    // music = LoadMusicStream("Sounds/music.ogg");
     explosionSound = LoadSound("Sounds/explosion.ogg");
-    PlayMusicStream(music);
+    // PlayMusicStream(music);
     InitGame();
 }
 
 Game::~Game() {
     Alien::UnloadImages();
-    UnloadMusicStream(music);
+    // UnloadMusicStream(music);
     UnloadSound(explosionSound);
 }
 
 void Game::Update() {
     if(run) {
+
+        size_t count = aliens.size();
+        // std::cout << "Aliens count: " << std::endl;
+        // std::cout << count << std::endl;
+
+        if (aliens.size() == 50) 
+        {
+            // Font font = LoadFontEx("Font/monogram.ttf", 64, 0, 0);
+            // Color yellow = {243, 216, 63, 255};
+            // std::cout << "You are now at 0 aliens" << std::endl;
+            // level++;
+
+            // // Convert the level number to a string
+            // std::string levelText = "LEVEL " + std::to_string(level);
+
+            // // Convert the std::string to a C-style string (const char*)
+            // const char* levelTextCStr = levelText.c_str();
+            Reset();
+            // BeginDrawing();
+
+            // ClearBackground(RAYWHITE);
+            // EndDrawing();
+
+            // DrawTextEx(font, levelTextCStr, {550, 740}, 34, 2, yellow);
+        }
 
         double currentTime = GetTime();
         if(currentTime - timeLastSpawn > mysteryShipSpawnInterval) {
@@ -281,6 +306,9 @@ void Game::InitGame()
     highscore = loadHighscoreFromFile();
     run = true;
     mysteryShipSpawnInterval = GetRandomValue(10, 20);
+    level = 1;
+    std::string levelTextFoo = "LEVEL " + std::to_string(level);
+    levelText = levelTextFoo.c_str();
 }
 
 void Game::checkForHighscore()

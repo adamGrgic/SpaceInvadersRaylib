@@ -13,9 +13,12 @@ class Game {
         void HandleInput();
         bool run;
         int lives;
+        int level;
+        const char* levelText;
         int score;
         int highscore;
         Music music;
+        std::vector<Alien> aliens;
     private:
         void DeleteInactiveLasers();
         std::vector<Obstacle> CreateObstacles();
@@ -32,7 +35,6 @@ class Game {
         int loadHighscoreFromFile();
         Spaceship spaceship;
         std::vector<Obstacle> obstacles;
-        std::vector<Alien> aliens;
         int aliensDirection;
         std::vector<Laser> alienLasers;
         constexpr static float alienLaserShootInterval = 0.35;

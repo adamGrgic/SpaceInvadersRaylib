@@ -12,6 +12,7 @@ int main()
 {
     Color grey = {29, 29, 27, 255};
     Color yellow = {243, 216, 63, 255};
+    Color green = {0, 255, 0, 255};
     int offset = 50;
     int windowWidth = 750;
     int windowHeight = 700;
@@ -26,8 +27,16 @@ int main()
 
     Game game;
 
+    game.level = 1;
+
+    // Convert the level number to a string
+    std::string levelText = "LEVEL " + std::to_string(game.level);
+
+    // Convert the std::string to a C-style string (const char*)
+    const char* levelTextCStr = levelText.c_str();
+
     while(WindowShouldClose() == false) {
-        UpdateMusicStream(game.music);
+        // UpdateMusicStream(game.music);
         game.HandleInput();
         game.Update();
         BeginDrawing();
@@ -35,8 +44,10 @@ int main()
         DrawRectangleRoundedLines({10, 10, 780, 780}, 0.18f, 20, 2, yellow);
         DrawLineEx({25, 730}, {775, 730}, 3, yellow);
 
+    
+
         if(game.run){
-            DrawTextEx(font, "LEVEL 01", {570, 740}, 34, 2, yellow);
+            DrawTextEx(font, levelTextCStr, {550, 740}, 34, 2, yellow);
         } else {
             DrawTextEx(font, "GAME OVER", {570, 740}, 34, 2, yellow);
         }
