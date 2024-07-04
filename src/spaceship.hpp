@@ -3,9 +3,8 @@
 #include "laser.hpp"
 #include <vector>
 
-
-class Spaceship {
-    public: 
+class Spaceship{
+    public:
         Spaceship();
         ~Spaceship();
         void Draw();
@@ -15,10 +14,10 @@ class Spaceship {
         Rectangle getRect();
         void Reset();
         std::vector<Laser> lasers;
-  
-    private: 
+
+    private:
         Texture2D image;
         Vector2 position;
         double lastFireTime;
-
+        Sound laserSound;
 };

@@ -2,7 +2,7 @@
 #include <raylib.h>
 
 class Alien {
-    public: 
+    public:
         Alien(int type, Vector2 position);
         void Update(int direction);
         void Draw();
@@ -10,8 +10,7 @@ class Alien {
         static void UnloadImages();
         Rectangle getRect();
         static Texture2D alienImages[3];
-        Texture2D image;
         int type;
         Vector2 position;
-    private: 
+    private:
 };

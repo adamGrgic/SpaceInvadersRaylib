@@ -8,9 +8,7 @@ class Laser {
         void Draw();
         Rectangle getRect();
         bool active;
-
-    private: 
+    private:
         Vector2 position;
         int speed;
-
 };

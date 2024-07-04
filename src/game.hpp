@@ -5,7 +5,7 @@
 #include "mysteryship.hpp"
 
 class Game {
-    public: 
+    public:
         Game();
         ~Game();
         void Draw();
@@ -15,18 +15,21 @@ class Game {
         int lives;
         int score;
         int highscore;
+        Music music;
     private:
         void DeleteInactiveLasers();
         std::vector<Obstacle> CreateObstacles();
         std::vector<Alien> CreateAliens();
         void MoveAliens();
-        void MoveDownAliens(int distance);
-        void AlienShootLasers();
+        void MoveDownAliens(int distance); 
+        void AlienShootLaser();
         void CheckForCollisions();
         void GameOver();
         void Reset();
         void InitGame();
-        void CheckForHighScore();
+        void checkForHighscore();
+        void saveHighscoreToFile(int highscore);
+        int loadHighscoreFromFile();
         Spaceship spaceship;
         std::vector<Obstacle> obstacles;
         std::vector<Alien> aliens;
@@ -37,4 +40,5 @@ class Game {
         MysteryShip mysteryship;
         float mysteryShipSpawnInterval;
         float timeLastSpawn;
+        Sound explosionSound;
 };

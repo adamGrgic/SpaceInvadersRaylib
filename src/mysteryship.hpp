@@ -2,7 +2,7 @@
 #include <raylib.h>
 
 class MysteryShip {
-    public: 
+    public:
         MysteryShip();
         ~MysteryShip();
         void Update();
@@ -10,7 +10,6 @@ class MysteryShip {
         void Spawn();
         Rectangle getRect();
         bool alive;
-
     private:
         Vector2 position;
         Texture2D image;

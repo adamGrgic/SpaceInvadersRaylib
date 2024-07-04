@@ -6,6 +6,6 @@ class Block {
         Block(Vector2 position);
         void Draw();
         Rectangle getRect();
-    private: 
+    private:
         Vector2 position;
 };
